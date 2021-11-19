@@ -1,3 +1,5 @@
+import React from "react";
+
 const contacts = [
   {
     _id: "607cf129311fcb0015dd6e89",
@@ -48,11 +50,13 @@ const contacts = [
 
 const App: React.FC = () => {
   // Mise en place du type static
+  const contactsState = React.useState(contacts);
 
   const deleteContact = (_id: string) => {
-    const index = contacts.findIndex((contact) => contact._id === _id);
-    contacts.splice(index, 1);
-    console.log("Taille : ", contacts.length, "\ncontacts : ", contacts);
+    const newState = [...contactsState[0]]; //Creating new array from existing copy
+    const index = newState.findIndex((contact) => contact._id === _id);
+    newState.splice(index, 1);
+    contactsState[1](newState);
   };
   return (
     <table>
@@ -68,7 +72,7 @@ const App: React.FC = () => {
       </thead>
       <tbody>
         {/* Expliquer code ES6 */}
-        {contacts.map((contact, index) => (
+        {contactsState[0].map((contact, index) => (
           <tr key={contact._id}>
             <td>{contact.last_name}</td>
             <td>{contact.first_name}</td>
