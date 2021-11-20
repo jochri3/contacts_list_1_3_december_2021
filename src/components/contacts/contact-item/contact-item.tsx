@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import IContact from "../../../interfaces/i-contacts";
 
 interface ContactItemProps {
@@ -17,6 +18,7 @@ const ContactItem: React.FC<ContactItemProps> = ({
       <td>{position}</td>
       <td>{phone_number}</td>
       <td>
+        <Link to={`/contact/${id}`}>Voir</Link>
         <button onClick={() => deleteContact(id)}>Supprimer</button>
       </td>
     </tr>
