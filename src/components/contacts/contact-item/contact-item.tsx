@@ -1,4 +1,4 @@
-import IContact from "../../interfaces/i-contacts";
+import IContact from "../../../interfaces/i-contacts";
 
 interface ContactItemProps {
   contact: IContact;
