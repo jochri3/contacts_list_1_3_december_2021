@@ -15,7 +15,7 @@ const App: React.FC = () => {
         .get<IContact[]>("http://localhost:3333/contacts")
         .then((res) => res.data);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
     return contacts;
   }
