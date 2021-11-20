@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 import IContact from "../interfaces/i-contacts";
 import ContactsList from "./contacts/contacts-list";
+import ContactAPI from "../config/api";
 
 const App: React.FC = () => {
   // Mise en place du type static
@@ -11,9 +11,7 @@ const App: React.FC = () => {
   async function fetchContacts(): Promise<IContact[]> {
     let contacts: IContact[] = [];
     try {
-      const response = await axios.get<IContact[]>(
-        "http://localhost:3333/contacts"
-      );
+      const response = await ContactAPI.get<IContact[]>("/");
       contacts = response.data;
     } catch (error) {
       console.error(error);
@@ -23,7 +21,7 @@ const App: React.FC = () => {
 
   async function deletContactById(id: string): Promise<void> {
     try {
-      await axios.delete(`http://localhost:3333/contacts/${id}`);
+      await ContactAPI.delete(`/${id}`);
     } catch (error) {
       console.log(error);
     }
