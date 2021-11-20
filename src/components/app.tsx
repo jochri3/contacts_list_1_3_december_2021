@@ -5,7 +5,7 @@ import ContactsList from "./contacts/contacts-list";
 
 const App: React.FC = () => {
   // Mise en place du type static
-  const contactsState = React.useState<IContact[]>([]);
+  const [contacts, setContacts] = React.useState<IContact[]>([]);
 
   // Mise en place du typage static
   async function fetchContacts() {
@@ -18,19 +18,17 @@ const App: React.FC = () => {
   React.useEffect(() => {
     (async () => {
       const contacts = await fetchContacts().then((data) => data);
-      contactsState[1](contacts);
+      setContacts(contacts);
     })();
   }, []);
 
   const deleteContact = (id: string) => {
-    const newState = [...contactsState[0]]; //Creating new array from existing copy
+    const newState = [...contacts]; //Creating new array from existing copy
     const index = newState.findIndex((contact) => contact.id === id);
     newState.splice(index, 1);
-    contactsState[1](newState);
+    setContacts(newState);
   };
-  return (
-    <ContactsList contacts={contactsState[0]} deleteContact={deleteContact} />
-  );
+  return <ContactsList contacts={contacts} deleteContact={deleteContact} />;
 };
 
 export default App;
