@@ -6,7 +6,11 @@ interface ContactsListProps {
   deleteContact: (id: string) => void;
 }
 
-const ContactsList: React.FC<ContactsListProps> = (props) => {
+const ContactsList: React.FC<ContactsListProps> = ({
+  contacts,
+  deleteContact,
+}) => {
+  //   const { contacts, ...others } = props;
   return (
     <table>
       <thead>
@@ -21,9 +25,9 @@ const ContactsList: React.FC<ContactsListProps> = (props) => {
       </thead>
       <tbody>
         {/* Expliquer code ES6 */}
-        {props.contacts.map((contact, index) => (
+        {contacts.map((contact) => (
           <ContactItem
-            deleteContact={props.deleteContact}
+            deleteContact={deleteContact}
             contact={contact}
             key={contact.id}
           />
