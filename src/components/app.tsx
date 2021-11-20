@@ -11,9 +11,10 @@ const App: React.FC = () => {
   async function fetchContacts(): Promise<IContact[]> {
     let contacts: IContact[] = [];
     try {
-      contacts = await axios
-        .get<IContact[]>("http://localhost:3333/contacts")
-        .then((res) => res.data);
+      const response = await axios.get<IContact[]>(
+        "http://localhost:3333/contacts"
+      );
+      contacts = response.data;
     } catch (error) {
       console.error(error);
     }
