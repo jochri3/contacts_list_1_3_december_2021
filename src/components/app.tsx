@@ -1,32 +1,43 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import IContact from "../interfaces/i-contacts";
 import ContactsList from "./contacts/contacts-list";
 
 const App: React.FC = () => {
   // Mise en place du type static
-  const [contacts, setContacts] = React.useState<IContact[]>([]);
-
+  const [contacts, setContacts] = useState<IContact[]>([]);
+  const [updateState, setUpdateState] = useState<number>(0); //force UI update
   // Mise en place du typage static
-  async function fetchContacts() {
-    const contacts = await axios
-      .get<IContact[]>("http://localhost:3333/contacts")
-      .then((res) => res.data);
+  async function fetchContacts(): Promise<IContact[]> {
+    let contacts: IContact[] = [];
+    try {
+      contacts = await axios
+        .get<IContact[]>("http://localhost:3333/contacts")
+        .then((res) => res.data);
+    } catch (error) {
+      console.log(error);
+    }
     return contacts;
   }
 
-  React.useEffect(() => {
+  async function deletContactById(id: string): Promise<void> {
+    try {
+      await axios.delete(`http://localhost:3333/contacts/${id}`);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
     (async () => {
       const contacts = await fetchContacts().then((data) => data);
       setContacts(contacts);
     })();
-  }, []);
+  }, [updateState]); //dependencie array to initate useEffect call
 
-  const deleteContact = (id: string) => {
-    const newState = [...contacts]; //Creating new array from existing copy
-    const index = newState.findIndex((contact) => contact.id === id);
-    newState.splice(index, 1);
-    setContacts(newState);
+  const deleteContact = async (id: string) => {
+    await deletContactById(id);
+    setUpdateState(updateState + 1); //For for UI update
   };
   return <ContactsList contacts={contacts} deleteContact={deleteContact} />;
 };
