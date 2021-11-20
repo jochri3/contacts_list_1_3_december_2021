@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import IContact from "../interfaces/i-contacts";
-import ContactsList from "./contacts/contacts-list";
-import ContactAPI from "../config/api";
+import IContact from "./interfaces/i-contacts";
+import ContactsList from "./components/contacts/contacts-list";
+import ContactAPI from "./config/api";
 
 const App: React.FC = () => {
   // Mise en place du type static
