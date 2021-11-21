@@ -1,41 +1,24 @@
 import { useState, useEffect } from "react";
-import IContact from "../../../interfaces/i-contacts";
 import ContactsList from "../../../components/contacts/contacts-list";
-import ContactAPI from "../../../config/api";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchContacts } from "../../../state/contact/contact.action-creator";
 
 const Index: React.FC = () => {
+  const dispatch = useDispatch();
   // Mise en place du type static
-  const [contacts, setContacts] = useState<IContact[]>([]);
+  const contacts: any = useSelector<any>((state) => state.contact.contacts);
   const [updateState, setUpdateState] = useState<number>(0); //force UI update
   // Mise en place du typage static
-  async function fetchContacts(): Promise<IContact[]> {
-    let contacts: IContact[] = [];
-    try {
-      const response = await ContactAPI.get<IContact[]>("/");
-      contacts = response.data;
-    } catch (error) {
-      console.error(error);
-    }
-    return contacts;
-  }
-
-  async function deletContactById(id: string): Promise<void> {
-    try {
-      await ContactAPI.delete(`/${id}`);
-    } catch (error) {
-      console.log(error);
-    }
-  }
 
   useEffect(() => {
     (async () => {
-      const contacts = await fetchContacts().then((data) => data);
-      setContacts(contacts);
+      dispatch(fetchContacts());
     })();
   }, [updateState]); //dependencie array to initate useEffect call
 
   const deleteContact = async (id: string) => {
-    await deletContactById(id);
+    console.log("supprimer");
+    // await deletContactById(id);
     setUpdateState(updateState + 1); //For for UI update
   };
   return (
