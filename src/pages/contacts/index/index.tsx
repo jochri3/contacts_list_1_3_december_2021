@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import IContact from "../../../interfaces/i-contacts";
-import ContactsList from "../../../components/contacts/contacts-list/contacts-list";
+import ContactsList from "../../../components/contacts/contacts-list";
 import ContactAPI from "../../../config/api";
 import { Outlet } from "react-router";
 
