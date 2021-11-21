@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Home = (): JSX.Element => {
+  const data = useSelector<any>((state) => state);
+  console.log(data);
   return (
     <>
       <h1>Welcome</h1>
