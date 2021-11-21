@@ -1,4 +1,5 @@
 import { Link, Outlet } from "react-router-dom";
+import "./style.scss";
 
 const Header: React.FC = () => {
   return (
