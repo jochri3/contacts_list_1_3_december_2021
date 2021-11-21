@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import IContact from "../../../interfaces/i-contacts";
 import ContactsList from "../../../components/contacts/contacts-list";
 import ContactAPI from "../../../config/api";
-import { Outlet } from "react-router";
+import "./style.scss";
 
 const Index: React.FC = () => {
   // Mise en place du type static
