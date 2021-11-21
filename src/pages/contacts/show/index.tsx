@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ContactAPI from "../../../config/api";
 import IContact from "../../../interfaces/i-contacts";
+import "./style.scss";
 
 type paramType = "id";
 
@@ -38,14 +39,14 @@ const Show = () => {
             {contact.first_name} {contact.last_name}
           </h2>
           <h3>{contact.position}</h3>
-          <p>
+          <p className="text">
             Email : <a href={`mailto:${contact.email}`}>{contact.email}</a>
           </p>
-          <p>
+          <p className="text">
             Téléphone :{" "}
             <a href={`tel:${contact.phone_number}`}>{contact.phone_number}</a>
           </p>
-          <p>Adresse : {contact.work_address}</p>
+          <p className="text">Adresse : {contact.work_address}</p>
         </>
       )}
     </>

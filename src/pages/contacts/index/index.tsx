@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import IContact from "../../../interfaces/i-contacts";
 import ContactsList from "../../../components/contacts/contacts-list";
 import ContactAPI from "../../../config/api";
-import "./style.scss";
 
 const Index: React.FC = () => {
   // Mise en place du type static
@@ -39,7 +38,12 @@ const Index: React.FC = () => {
     await deletContactById(id);
     setUpdateState(updateState + 1); //For for UI update
   };
-  return <ContactsList contacts={contacts} deleteContact={deleteContact} />;
+  return (
+    <>
+      <h1>Liste des contacts</h1>
+      <ContactsList contacts={contacts} deleteContact={deleteContact} />
+    </>
+  );
 };
 
 export default Index;
