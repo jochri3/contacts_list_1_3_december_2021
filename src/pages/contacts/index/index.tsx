@@ -5,7 +5,6 @@ import { fetchContacts } from "../../../state/contact/contact.action-creator";
 
 const Index: React.FC = () => {
   const dispatch = useDispatch();
-  // Mise en place du type static
   const contacts: any = useSelector<any>((state) => state.contact.contacts);
   const [updateState, setUpdateState] = useState<number>(0); //force UI update
   // Mise en place du typage static
@@ -14,7 +13,7 @@ const Index: React.FC = () => {
     (async () => {
       dispatch(fetchContacts());
     })();
-  }, [updateState]); //dependencie array to initate useEffect call
+  }, [updateState]);
 
   const deleteContact = async (id: string) => {
     console.log("supprimer");

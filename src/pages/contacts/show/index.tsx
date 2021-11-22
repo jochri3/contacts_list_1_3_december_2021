@@ -1,33 +1,19 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import ContactAPI from "../../../config/api";
-import IContact from "../../../interfaces/i-contacts";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchContactById } from "../../../state/contact/contact.action-creator";
 import "./style.scss";
 
 type paramType = "id";
 
 const Show = () => {
+  const dispatch = useDispatch();
   const params = useParams<paramType>();
-  const [contact, setContact] = useState<IContact>({} as IContact);
 
-  async function fetchContactsById(id: string): Promise<IContact> {
-    let contact: IContact = {} as IContact;
-    try {
-      const response = await ContactAPI.get<IContact>(`/${id}`);
-      contact = response.data;
-    } catch (error) {
-      console.error(error);
-    }
-    return contact;
-  }
+  const { contact }: any = useSelector<any>((state) => state.contact);
 
   useEffect(() => {
-    (async () => {
-      const contacts = await fetchContactsById(params.id as string).then(
-        (data) => data
-      );
-      setContact(contacts);
-    })();
+    dispatch(fetchContactById(params.id as string));
   }, []); //dependencie array to initate useEffect call
 
   return (
