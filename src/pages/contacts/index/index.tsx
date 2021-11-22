@@ -1,24 +1,24 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import ContactsList from "../../../components/contacts/contacts-list";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchContacts } from "../../../state/contact/contact.action-creator";
+import {
+  fetchContacts,
+  removeContact,
+} from "../../../state/contact/contact.action-creator";
 
 const Index: React.FC = () => {
   const dispatch = useDispatch();
-  const contacts: any = useSelector<any>((state) => state.contact.contacts);
-  const [updateState, setUpdateState] = useState<number>(0); //force UI update
+  const { contacts, update }: any = useSelector<any>((state) => state.contact);
   // Mise en place du typage static
 
   useEffect(() => {
     (async () => {
       dispatch(fetchContacts());
     })();
-  }, [updateState]);
+  }, [update]);
 
   const deleteContact = async (id: string) => {
-    console.log("supprimer");
-    // await deletContactById(id);
-    setUpdateState(updateState + 1); //For for UI update
+    dispatch(removeContact(id));
   };
   return (
     <>

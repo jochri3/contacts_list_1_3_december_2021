@@ -44,9 +44,16 @@ const contactReducer = (
       ...state,
       loading: false,
       contact: action.payload,
-      update: state.update + 1,
     };
   } else if (action.type === ActionTypes.FETCH_CONTACT_FAILURE) {
+    return { ...state, loading: false, error: action.error };
+  }
+  // DELETE api/contacts/:id
+  else if (action.type === ActionTypes.DELETE_CONTACT_REQUEST) {
+    return { ...state, loading: true, error: null };
+  } else if (action.type === ActionTypes.DELETE_CONTACT_SUCCESS) {
+    return { ...state, loading: false, error: null, update: state.update + 1 };
+  } else if (action.type === ActionTypes.DELETE_CONTACT_FAILURE) {
     return { ...state, loading: false, error: action.error };
   }
   return state;
