@@ -14,7 +14,7 @@ const Show = () => {
 
   useEffect(() => {
     dispatch(fetchContactById(params.id as string));
-  }, []); //dependencie array to initate useEffect call
+  }, []);
 
   return (
     <>

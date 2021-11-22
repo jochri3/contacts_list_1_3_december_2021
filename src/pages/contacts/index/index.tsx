@@ -8,14 +8,12 @@ import {
 
 const Index: React.FC = () => {
   const dispatch = useDispatch();
-  const { contacts, update }: any = useSelector<any>((state) => state.contact);
-  // Mise en place du typage static
-
+  const { contacts }: any = useSelector<any>((state) => state.contact);
   useEffect(() => {
     (async () => {
       dispatch(fetchContacts());
     })();
-  }, [update]);
+  }, []);
 
   const deleteContact = async (id: string) => {
     dispatch(removeContact(id));
