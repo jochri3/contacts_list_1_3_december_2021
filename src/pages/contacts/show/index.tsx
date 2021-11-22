@@ -1,20 +1,18 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { fetchContactById } from "../../../state/contact/contact.action-creator";
 import "./style.scss";
 import { useTypedSelector } from "../../../hooks/use-typed-selector";
+import { useActions } from "../../../hooks/use-actions";
 
 type paramType = "id";
 
 const Show = () => {
-  const dispatch = useDispatch();
   const params = useParams<paramType>();
-
+  const { fetchContactById } = useActions();
   const { contact } = useTypedSelector((state) => state.contact);
 
   useEffect(() => {
-    dispatch(fetchContactById(params.id as string));
+    fetchContactById(params.id as string);
   }, []);
 
   return (
