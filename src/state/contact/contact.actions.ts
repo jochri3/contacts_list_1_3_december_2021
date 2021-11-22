@@ -37,7 +37,7 @@ export interface IDeleteContactRequest {
 }
 
 export interface IDeleteContactSuccess {
-  type: ActionTypes.DELETE_CONTACT_REQUEST;
+  type: ActionTypes.DELETE_CONTACT_SUCCESS;
 }
 
 export interface IDeleteContactFailure {
@@ -51,4 +51,7 @@ export type Action =
   | IFetchContactsFailure
   | IFetchContactRequest
   | IFetchContactSuccess
-  | IFetchContactFailure;
+  | IFetchContactFailure
+  | IDeleteContactFailure
+  | IDeleteContactRequest
+  | IDeleteContactSuccess;

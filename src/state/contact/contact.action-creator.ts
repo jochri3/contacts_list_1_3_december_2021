@@ -33,3 +33,15 @@ export const fetchContactById = (id: string) => {
     }
   };
 };
+
+export const removeContact = (id: string) => {
+  return async (dispatch: Dispatch<Action>) => {
+    dispatch({ type: ActionTypes.DELETE_CONTACT_REQUEST });
+    try {
+      await ContactAPI.delete("/" + id);
+      dispatch({ type: ActionTypes.DELETE_CONTACT_SUCCESS });
+    } catch (error) {
+      dispatch({ type: ActionTypes.DELETE_CONTACT_FAILURE, error: "Erreur" });
+    }
+  };
+};

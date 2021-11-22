@@ -7,6 +7,7 @@ export interface IContactState {
   contact: IContact;
   loading: boolean;
   error: string | null;
+  update: number;
 }
 
 const initialState: IContactState = {
@@ -14,6 +15,7 @@ const initialState: IContactState = {
   contact: {} as IContact,
   loading: false,
   error: "",
+  update: 0,
 };
 
 const contactReducer = (
@@ -38,7 +40,12 @@ const contactReducer = (
   else if (action.type === ActionTypes.FETCH_CONTACT_REQUEST) {
     return { ...state, loading: true, contact: {} as IContact };
   } else if (action.type === ActionTypes.FETCH_CONTACT_SUCCESS) {
-    return { ...state, loading: false, contact: action.payload };
+    return {
+      ...state,
+      loading: false,
+      contact: action.payload,
+      update: state.update + 1,
+    };
   } else if (action.type === ActionTypes.FETCH_CONTACT_FAILURE) {
     return { ...state, loading: false, error: action.error };
   }
