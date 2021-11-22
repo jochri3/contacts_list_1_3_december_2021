@@ -31,6 +31,20 @@ export interface IFetchContactFailure {
   error: string;
 }
 
+// DELETE api/contacts/:id
+export interface IDeleteContactRequest {
+  type: ActionTypes.DELETE_CONTACT_REQUEST;
+}
+
+export interface IDeleteContactSuccess {
+  type: ActionTypes.DELETE_CONTACT_REQUEST;
+}
+
+export interface IDeleteContactFailure {
+  type: ActionTypes.DELETE_CONTACT_FAILURE;
+  error: string;
+}
+
 export type Action =
   | IFetchContactsRequest
   | IFetchContactsSuccess
