@@ -14,7 +14,22 @@ export const fetchContacts = () => {
         payload: response.data,
       });
     } catch (error) {
-      dispatch({ type: ActionTypes.FETCH_CONTACTS_FAILURE, payload: "erreur" });
+      dispatch({ type: ActionTypes.FETCH_CONTACTS_FAILURE, error: "erreur" });
+    }
+  };
+};
+
+export const fetchContactById = (id: string) => {
+  return async (dispatch: Dispatch<Action>) => {
+    dispatch({ type: ActionTypes.FETCH_CONTACT_REQUEST });
+    try {
+      const response = await ContactAPI.get<IContact>("/" + id);
+      dispatch({
+        type: ActionTypes.FETCH_CONTACT_SUCCESS,
+        payload: response.data,
+      });
+    } catch (error) {
+      dispatch({ type: ActionTypes.FETCH_CONTACT_FAILURE, error: "erreur" });
     }
   };
 };

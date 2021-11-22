@@ -4,12 +4,14 @@ import { Action } from "./contact.actions";
 
 export interface IContactState {
   contacts: Array<IContact>;
+  contact: IContact;
   loading: boolean;
   error: string | null;
 }
 
 const initialState: IContactState = {
   contacts: [],
+  contact: {} as IContact,
   loading: false,
   error: "",
 };
@@ -18,19 +20,27 @@ const contactReducer = (
   state: IContactState = initialState,
   action: Action
 ): IContactState => {
+  // GET /api/contacts
   if (action.type === ActionTypes.FETCH_CONTACTS_REQUEST) {
     return { ...state, loading: true, error: null, contacts: [] };
-  }
-  if (action.type === ActionTypes.FETCH_CONTACTS_SUCCESS) {
+  } else if (action.type === ActionTypes.FETCH_CONTACTS_SUCCESS) {
     return {
       ...state,
       loading: false,
       error: null,
       contacts: action.payload,
     };
+  } else if (action.type === ActionTypes.FETCH_CONTACTS_FAILURE) {
+    return { ...state, loading: false, contacts: [], error: action.error };
   }
-  if (action.type === ActionTypes.FETCH_CONTACTS_FAILURE) {
-    return { ...state, loading: false, contacts: [], error: action.payload };
+
+  // GET api/contacts/:id
+  else if (action.type === ActionTypes.FETCH_CONTACT_REQUEST) {
+    return { ...state, loading: true, contact: {} as IContact };
+  } else if (action.type === ActionTypes.FETCH_CONTACT_SUCCESS) {
+    return { ...state, loading: false, contact: action.payload };
+  } else if (action.type === ActionTypes.FETCH_CONTACT_FAILURE) {
+    return { ...state, loading: false, error: action.error };
   }
   return state;
 };
