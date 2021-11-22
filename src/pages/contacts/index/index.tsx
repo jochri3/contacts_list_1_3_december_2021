@@ -1,14 +1,15 @@
 import { useEffect } from "react";
 import ContactsList from "../../../components/contacts/contacts-list";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   fetchContacts,
   removeContact,
 } from "../../../state/contact/contact.action-creator";
+import { useTypedSelector } from "../../../hooks/use-typed-selector";
 
 const Index: React.FC = () => {
   const dispatch = useDispatch();
-  const { contacts }: any = useSelector<any>((state) => state.contact);
+  const { contacts } = useTypedSelector((state) => state.contact);
   useEffect(() => {
     (async () => {
       dispatch(fetchContacts());
