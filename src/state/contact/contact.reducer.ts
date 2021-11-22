@@ -21,7 +21,7 @@ const contactReducer = (
   if (action.type === ActionTypes.FETCH_CONTACTS_REQUEST) {
     return { ...state, loading: true, error: null, contacts: [] };
   }
-  if (action.type === ActionTypes.FETCH_CONTACTS_SUCESS) {
+  if (action.type === ActionTypes.FETCH_CONTACTS_SUCCESS) {
     return {
       ...state,
       loading: false,

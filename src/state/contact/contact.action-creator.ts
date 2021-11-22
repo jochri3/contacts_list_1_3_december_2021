@@ -10,7 +10,7 @@ export const fetchContacts = () => {
     try {
       const response = await ContactAPI.get<Array<IContact>>("/");
       dispatch({
-        type: ActionTypes.FETCH_CONTACTS_SUCESS,
+        type: ActionTypes.FETCH_CONTACTS_SUCCESS,
         payload: response.data,
       });
     } catch (error) {

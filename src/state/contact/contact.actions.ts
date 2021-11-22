@@ -6,7 +6,7 @@ export interface IFetchContactsRequest {
 }
 
 export interface IFetchContactsSuccess {
-  type: ActionTypes.FETCH_CONTACTS_SUCESS;
+  type: ActionTypes.FETCH_CONTACTS_SUCCESS;
   payload: Array<IContact>;
 }
 
