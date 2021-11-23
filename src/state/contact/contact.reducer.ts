@@ -26,12 +26,14 @@ const contactReducer = (
     case ActionTypes.DELETE_CONTACT:
       return {
         ...state,
-        createdOrUpdated:false,
+        createdOrUpdated: false,
         contacts: state.contacts.filter(
           (contact) => contact.id !== action.payload.id
         ),
       };
     case ActionTypes.CREATE_CONTACT:
+      return { ...state, createdOrUpdated: true };
+    case ActionTypes.UPDATE_CONTACT:
       return { ...state, createdOrUpdated: true };
     default:
       return state;

@@ -1,22 +1,31 @@
 {
   "contacts": [
     {
-      "id": "8d472c3f-9b42-495e-a771-2802dbfeeb08",
-      "first_name": "Adri",
-      "last_name": "Miller",
-      "email": "wusaqiwery@mailin.com",
-      "phone_number": "+33666666669",
-      "position": "Odio maiores eos ",
-      "work_address": "Est ratione qui eum"
+      "id": "8f3b3018-d0c3-4da0-953e-72d2ddfef046",
+      "first_name": "Christophe",
+      "last_name": "Guéroult",
+      "email": "christophe@training.com",
+      "phone_number": "+3370976577",
+      "position": "Directeur Général",
+      "work_address": "Irlande"
     },
     {
-      "id": "feab78d8-f420-4b3d-bbaf-9c26eae7fad2",
-      "first_name": "Garrett",
-      "last_name": "Sharp",
-      "email": "suboto@training.com",
-      "phone_number": "+3373781418",
-      "position": "Ut harum eu nisi ess",
-      "work_address": "Ducimus quo itaque "
+      "id": "e36b77ef-2299-4055-a527-34fd11ec3a9e",
+      "first_name": "Pierrer",
+      "last_name": "Nédélec",
+      "email": "pierre@coderbase.io",
+      "phone_number": "+3379168232",
+      "position": "Directeur Executif",
+      "work_address": "Paris, France"
+    },
+    {
+      "id": "80b30683-32e4-4d03-8881-0d660ef2148d",
+      "first_name": "Christian",
+      "last_name": "Lisangola Bondjali",
+      "phone_number": "+3372431634",
+      "position": "Développeur Backend",
+      "work_address": "Quelque part dans le cloud",
+      "email": "christian@zabibu.co"
     }
   ]
 }

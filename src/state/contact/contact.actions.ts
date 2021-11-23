@@ -77,8 +77,13 @@ export interface ICreateContact {
   type: ActionTypes.CREATE_CONTACT;
 }
 
+export interface IUpdateContact {
+  type: ActionTypes.UPDATE_CONTACT;
+}
+
 export type Action =
   | IFetchContacts
   | IFetchContact
   | IDeleteContact
-  | ICreateContact;
+  | ICreateContact
+  | IUpdateContact;

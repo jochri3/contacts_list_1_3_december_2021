@@ -9,7 +9,7 @@ import {
   fetchContacts,
   fetchContactById,
   removeContact,
-  createContact,
+  createContact,updateContact
 } from "../state/contact/contact.action-creator";
 
 export const useActions = () => {
@@ -23,6 +23,7 @@ export const useActions = () => {
       createContact,
       prefillForm,
       resetContactForm,
+      updateContact,
     },
     dispatch
   );

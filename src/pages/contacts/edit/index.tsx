@@ -9,11 +9,11 @@ type paramType = "id";
 
 const CreateContact: React.FC = () => {
   const { form: formData } = useTypedSelector((state) => state);
-  const { createContact, prefillForm } = useActions();
+  const { updateContact, prefillForm } = useActions();
   const params = useParams<paramType>();
   const submitForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    createContact(formData);
+    updateContact(formData);
   };
 
   useEffect(() => {

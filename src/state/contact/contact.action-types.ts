@@ -3,6 +3,7 @@ export enum ActionTypes {
   FETCH_CONTACT = "fetch_contact",
   DELETE_CONTACT = "delete_contact",
   CREATE_CONTACT = "create_contact",
+  UPDATE_CONTACT = "update_contact",
 
   // FETCH_CONTACTS_REQUEST = "fetch_contacts_request",
   // FETCH_CONTACTS_SUCCESS = "fetch_contacts_success",

@@ -45,3 +45,14 @@ export const createContact = (contact: IContact) => {
     dispatch({ type: FormActionTypes.RESET_CONTACT_FORM });
   };
 };
+
+// PUT /api/contacts/:id
+export const updateContact = (contact: IContact) => {
+  return async (dispatch: Dispatch<Action | FormActions>) => {
+    await ContactAPI.put<IContact>("/" + contact.id, contact);
+    dispatch({
+      type: ActionTypes.UPDATE_CONTACT,
+    });
+    dispatch({ type: FormActionTypes.RESET_CONTACT_FORM });
+  };
+};
