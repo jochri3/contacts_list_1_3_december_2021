@@ -1,6 +1,7 @@
 import { ActionTypes } from "./contact.action-types";
 import { IContact } from "../../interfaces/i-contacts";
 import { Action } from "./contact.actions";
+import { produce } from "immer";
 
 export interface IContactState {
   contacts: Array<IContact>;
@@ -14,31 +15,34 @@ const initialState: IContactState = {
   createdOrUpdated: false,
 };
 
-const contactReducer = (
-  state: IContactState = initialState,
-  action: Action
-): IContactState => {
-  switch (action.type) {
-    case ActionTypes.FETCH_CONTACTS:
-      return { ...state, contacts: action.payload, createdOrUpdated: false };
-    case ActionTypes.FETCH_CONTACT:
-      return { ...state, contact: action.payload };
-    case ActionTypes.DELETE_CONTACT:
-      return {
-        ...state,
-        createdOrUpdated: false,
-        contacts: state.contacts.filter(
+const contactReducer = produce(
+  (state: IContactState = initialState, action: Action): IContactState => {
+    switch (action.type) {
+      case ActionTypes.FETCH_CONTACTS:
+        state.contacts = action.payload;
+        state.createdOrUpdated = false;
+        return state;
+      case ActionTypes.FETCH_CONTACT:
+        state.contact = action.payload;
+        return state;
+      case ActionTypes.DELETE_CONTACT:
+        state.createdOrUpdated = false;
+        state.contacts = state.contacts.filter(
           (contact) => contact.id !== action.payload.id
-        ),
-      };
-    case ActionTypes.CREATE_CONTACT:
-      return { ...state, createdOrUpdated: true };
-    case ActionTypes.UPDATE_CONTACT:
-      return { ...state, createdOrUpdated: true };
-    default:
-      return state;
-  }
-};
+        );
+        return state;
+      case ActionTypes.CREATE_CONTACT:
+        state.createdOrUpdated = true;
+        return state;
+      case ActionTypes.UPDATE_CONTACT:
+        state.createdOrUpdated = true;
+        return state;
+      default:
+        return state;
+    }
+  },
+  initialState
+);
 
 // const contactReducer = (
 //   state: IContactState = initialState,
