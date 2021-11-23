@@ -1,5 +1,5 @@
 import { ActionTypes } from "./contact.action-types";
-import IContact from "../../interfaces/i-contacts";
+import { IContact } from "../../interfaces/i-contacts";
 
 // // GET api/contacts
 // export interface IFetchContactsRequest {
@@ -73,4 +73,12 @@ export interface IDeleteContact {
   };
 }
 
-export type Action = IFetchContacts | IFetchContact | IDeleteContact;
+export interface ICreateContact {
+  type: ActionTypes.CREATE_CONTACT;
+}
+
+export type Action =
+  | IFetchContacts
+  | IFetchContact
+  | IDeleteContact
+  | ICreateContact;

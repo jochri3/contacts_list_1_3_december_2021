@@ -1,4 +1,4 @@
-export default interface IContact {
+export interface IContact {
   id: string;
   first_name: string;
   last_name: string;

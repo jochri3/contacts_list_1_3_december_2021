@@ -1,4 +1,4 @@
-import IContact from "../../../interfaces/i-contacts";
+import { IContact } from "../../../interfaces/i-contacts";
 import ContactItem from "../contact-item";
 import "./style.scss";
 

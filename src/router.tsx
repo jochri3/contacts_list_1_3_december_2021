@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Header from "./components/layout/header";
 import Create from "./pages/contacts/create";
 import Edit from "./pages/contacts/edit";

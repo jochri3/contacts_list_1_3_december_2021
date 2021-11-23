@@ -1,15 +1,17 @@
 import { ActionTypes } from "./contact.action-types";
-import IContact from "../../interfaces/i-contacts";
+import { IContact } from "../../interfaces/i-contacts";
 import { Action } from "./contact.actions";
 
 export interface IContactState {
   contacts: Array<IContact>;
   contact: IContact;
+  createdOrUpdated: boolean;
 }
 
 const initialState: IContactState = {
   contacts: [],
   contact: {} as IContact,
+  createdOrUpdated: false,
 };
 
 const contactReducer = (
@@ -18,16 +20,19 @@ const contactReducer = (
 ): IContactState => {
   switch (action.type) {
     case ActionTypes.FETCH_CONTACTS:
-      return { ...state, contacts: action.payload };
+      return { ...state, contacts: action.payload, createdOrUpdated: false };
     case ActionTypes.FETCH_CONTACT:
       return { ...state, contact: action.payload };
     case ActionTypes.DELETE_CONTACT:
       return {
         ...state,
+        createdOrUpdated:false,
         contacts: state.contacts.filter(
           (contact) => contact.id !== action.payload.id
         ),
       };
+    case ActionTypes.CREATE_CONTACT:
+      return { ...state, createdOrUpdated: true };
     default:
       return state;
   }

@@ -20,7 +20,7 @@ const Header: React.FC = () => {
               </Link>
             </li>
             <li>
-              <Link to="#" className="nav-link">
+              <Link to="/contact/new" className="nav-link">
                 Créer contact
               </Link>
             </li>
