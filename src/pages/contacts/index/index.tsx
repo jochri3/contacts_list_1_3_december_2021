@@ -5,9 +5,10 @@ import { useActions } from "../../../hooks/use-actions";
 
 const Index: React.FC = () => {
   const { contacts } = useTypedSelector((state) => state.contact);
-  const { fetchContacts, removeContact } = useActions();
+  const { fetchContacts, removeContact, resetContactForm } = useActions();
   useEffect(() => {
     (async () => {
+      resetContactForm();
       fetchContacts();
     })();
   }, []);

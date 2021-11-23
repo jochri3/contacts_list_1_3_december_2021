@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "./style.scss";
 import { useTypedSelector } from "../../../hooks/use-typed-selector";
 import { useActions } from "../../../hooks/use-actions";
@@ -8,10 +8,11 @@ type paramType = "id";
 
 const Show = () => {
   const params = useParams<paramType>();
-  const { fetchContactById } = useActions();
+  const { fetchContactById, resetContactForm } = useActions();
   const { contact } = useTypedSelector((state) => state.contact);
 
   useEffect(() => {
+    resetContactForm();
     fetchContactById(params.id as string);
   }, []);
 
@@ -32,6 +33,7 @@ const Show = () => {
             <a href={`tel:${contact.phone_number}`}>{contact.phone_number}</a>
           </p>
           <p className="text">Adresse : {contact.work_address}</p>
+          <Link to={`/contact/${contact.id}/edit`}>Modifer</Link>
         </>
       )}
     </>

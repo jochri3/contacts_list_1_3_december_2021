@@ -24,6 +24,25 @@ export const formReducer = (
       };
     case ActionTypes.RESET_CONTACT_FORM:
       return initialState;
+    case ActionTypes.PREFILL_CONTACT_FORM:
+      const {
+        id,
+        first_name,
+        last_name,
+        phone_number,
+        position,
+        work_address,
+        email
+      } = action.payload;
+      return {
+        id,
+        first_name,
+        last_name,
+        phone_number,
+        position,
+        work_address,
+        email
+      };
     default:
       return state;
   }

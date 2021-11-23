@@ -1,6 +1,10 @@
 import { useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
-import { updateContactForm } from "../state/contact-form/action-creators";
+import {
+  prefillForm,
+  updateContactForm,
+  resetContactForm,
+} from "../state/contact-form/action-creators";
 import {
   fetchContacts,
   fetchContactById,
@@ -17,6 +21,8 @@ export const useActions = () => {
       removeContact,
       updateContactForm,
       createContact,
+      prefillForm,
+      resetContactForm,
     },
     dispatch
   );
