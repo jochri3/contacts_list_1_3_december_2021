@@ -3,13 +3,14 @@ import { Link, useParams } from "react-router-dom";
 import "./style.scss";
 import { useTypedSelector } from "../../../hooks/use-typed-selector";
 import { useActions } from "../../../hooks/use-actions";
+import { ContactSelectors } from "../../../state/contact/contact.selectors";
 
 type paramType = "id";
 
 const Show = () => {
   const params = useParams<paramType>();
   const { fetchContactById, resetContactForm } = useActions();
-  const { contact } = useTypedSelector((state) => state.contact);
+  const contact = useTypedSelector(ContactSelectors.getContact);
 
   useEffect(() => {
     resetContactForm();

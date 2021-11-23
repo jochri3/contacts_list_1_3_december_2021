@@ -2,9 +2,10 @@ import Form from "../../../components/contacts/contact-form";
 import FormWrapper from "../../../components/contacts/contact-form/wrapper";
 import { useActions } from "../../../hooks/use-actions";
 import { useTypedSelector } from "../../../hooks/use-typed-selector";
+import { ContactFormState } from "../../../state/contact-form/selectors";
 
 const CreateContact: React.FC = () => {
-  const formData = useTypedSelector((state) => state.form);
+  const formData = useTypedSelector(ContactFormState.getFormData);
   const { createContact } = useActions();
   const submitForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

@@ -4,11 +4,12 @@ import Form from "../../../components/contacts/contact-form";
 import FormWrapper from "../../../components/contacts/contact-form/wrapper";
 import { useActions } from "../../../hooks/use-actions";
 import { useTypedSelector } from "../../../hooks/use-typed-selector";
+import { ContactFormState } from "../../../state/contact-form/selectors";
 
 type paramType = "id";
 
 const CreateContact: React.FC = () => {
-  const { form: formData } = useTypedSelector((state) => state);
+  const formData = useTypedSelector(ContactFormState.getFormData);
   const { updateContact, prefillForm } = useActions();
   const params = useParams<paramType>();
   const submitForm = (e: React.FormEvent<HTMLFormElement>) => {
