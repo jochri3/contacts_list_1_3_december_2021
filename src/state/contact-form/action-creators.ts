@@ -17,7 +17,7 @@ export const updateContactForm = (
 export const prefillForm = (id: string) => {
   return (dispatch: Dispatch<Action>, getState: () => RootState) => {
     const state = getState();
-    const contact = state.contact.contacts.find((contact) => (contact.id === id));
+    const contact = state.contact.contacts.find((contact) => contact.id === id);
     dispatch({
       type: ActionTypes.PREFILL_CONTACT_FORM,
       payload: contact as IContact,

@@ -32,7 +32,7 @@ export const formReducer = (
         phone_number,
         position,
         work_address,
-        email
+        email,
       } = action.payload;
       return {
         id,
@@ -41,7 +41,7 @@ export const formReducer = (
         phone_number,
         position,
         work_address,
-        email
+        email,
       };
     default:
       return state;

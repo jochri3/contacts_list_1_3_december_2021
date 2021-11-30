@@ -2,12 +2,12 @@
   "contacts": [
     {
       "id": "8f3b3018-d0c3-4da0-953e-72d2ddfef046",
-      "first_name": "Christophe",
+      "first_name": "Christophe dd",
       "last_name": "Guéroult",
-      "email": "christophe@training.com",
       "phone_number": "+3370976577",
       "position": "Directeur Général",
-      "work_address": "Irlande"
+      "work_address": "Irlande",
+      "email": "christophe@training.com"
     },
     {
       "id": "e36b77ef-2299-4055-a527-34fd11ec3a9e",
